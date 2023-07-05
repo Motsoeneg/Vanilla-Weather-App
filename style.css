@@ -1,0 +1,45 @@
+body {
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+h6 {
+  display: block;
+  font-size: 29px;
+  height: 67px;
+  text-shadow: rgba(0, 0, 0, 0.3) 0.5px 0.5px;
+}
+.updated {
+  font-size: small;
+  font-weight: lighter;
+}
+.temperature {
+  font-size: 34px;
+  height: 67px;
+  line-height: 16px;
+  text-shadow: rgba(0, 0, 0, 0.3) 0.5px 0.5px;
+  margin: 0px;
+}
+.units {
+  position: relative;
+  font-size: 16px;
+  text-shadow: rgba(0, 0, 0, 0.3) 0.5px 0.5px;
+  margin: 0px;
+}
+
+.weather-wraper {
+  max-width: 600px;
+  margin: 40px auto;
+}
+.weather {
+  padding: 20px;
+  border: 1px solid #adadad;
+  border-radius: 5px;
+}
+
+.wtr-conditions {
+  height: 67px;
+  line-height: 16px;
+  list-style-position: outside;
+  list-style-type: none;
+  text-shadow: rgba(0, 0, 0, 0.3) 0.5px 0.5px;
+}
