@@ -1,7 +1,29 @@
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
+
 let apiKey = "2e190051baofeb04db4bce4a3b4t041f";
 let apiUrl =
   "https://api.shecodes.io/weather/v1/current?query=Durban&key=2e190051baofeb04db4bce4a3b4t041f";
-
 function showTemp(response) {
   console.log(response.data);
   let temp = Math.round(response.data.temperature.current);
@@ -16,6 +38,8 @@ function showTemp(response) {
   let wind = Math.round(response.data.wind.speed);
   let windElement = document.querySelector("#windSpeed");
   windElement.innerHTML = `${wind}`;
+  let dateElement = document.querySelector("#date");
+  dateElement.innerHTML = formatDate(response.data.time * 1000);
 }
 //let click = document.querySelector("form");
 //click.addEventListener("submit", form);
