@@ -23,9 +23,8 @@ function formatDate(timestamp) {
 
 let apiKey = "2e190051baofeb04db4bce4a3b4t041f";
 let apiUrl =
-  "https://api.shecodes.io/weather/v1/current?query=Durban&key=2e190051baofeb04db4bce4a3b4t041f";
+  "https://api.shecodes.io/weather/v1/current?query=Pari&key=2e190051baofeb04db4bce4a3b4t041f";
 function showTemp(response) {
-  console.log(response.data);
   let temp = Math.round(response.data.temperature.current);
   let tempElement = document.querySelector("#temperature");
   tempElement.innerHTML = `${temp}`;
@@ -40,6 +39,12 @@ function showTemp(response) {
   windElement.innerHTML = `${wind}`;
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
+  iconElement.setAttribute("alt", response.data.condition.icon);
 }
 //let click = document.querySelector("form");
 //click.addEventListener("submit", form);
