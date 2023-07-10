@@ -21,9 +21,6 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-let apiKey = "2e190051baofeb04db4bce4a3b4t041f";
-let apiUrl =
-  "https://api.shecodes.io/weather/v1/current?query=Pari&key=2e190051baofeb04db4bce4a3b4t041f";
 function showTemp(response) {
   let temp = Math.round(response.data.temperature.current);
   let tempElement = document.querySelector("#temperature");
@@ -46,6 +43,18 @@ function showTemp(response) {
   );
   iconElement.setAttribute("alt", response.data.condition.icon);
 }
-//let click = document.querySelector("form");
-//click.addEventListener("submit", form);
-axios.get(`${apiUrl}`).then(showTemp);
+function search(city) {
+  let apiKey = "2e190051baofeb04db4bce4a3b4t041f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=2e190051baofeb04db4bce4a3b4t041f`;
+  axios.get(`${apiUrl}`).then(showTemp);
+}
+
+function searchEngine(event) {
+  event.preventDefault();
+  let cityinputElement = document.querySelector("#city-input");
+  search(cityinputElement.value);
+}
+search("Durban");
+
+let click = document.querySelector("#search-form");
+click.addEventListener("submit", searchEngine);
