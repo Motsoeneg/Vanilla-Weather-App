@@ -22,9 +22,13 @@ function formatDate(timestamp) {
 }
 
 function showTemp(response) {
-  let temp = Math.round(response.data.temperature.current);
+  let temp = Math.round(celsiusTemperature);
+
   let tempElement = document.querySelector("#temperature");
   tempElement.innerHTML = `${temp}`;
+
+  celsiusTemperature = response.data.temperature.current;
+
   let h6 = document.querySelector("#city");
   h6.innerHTML = response.data.city;
   let description = document.querySelector("#description");
@@ -54,7 +58,28 @@ function searchEngine(event) {
   let cityinputElement = document.querySelector("#city-input");
   search(cityinputElement.value);
 }
-search("Durban");
 
 let click = document.querySelector("#search-form");
 click.addEventListener("submit", searchEngine);
+
+function displayfahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+function displayCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", displayfahrenheit);
+
+let celsius = document.querySelector("#fahrenheit");
+celsius.addEventListener("click", displayCelsius);
+
+search("Durban");
