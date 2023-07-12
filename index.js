@@ -21,7 +21,8 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Wed", "Thurs", "Fri", "Sat", "Sun", "Mon"];
@@ -50,6 +51,12 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getforecast(coordinates) {
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=2e190051baofeb04db4bce4a3b4t041f&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showTemp(response) {
   let temp = Math.round(celsiusTemperature);
 
@@ -75,6 +82,8 @@ function showTemp(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.icon);
+  //console.log(response.data);
+  getforecast(response.data.coordinates);
 }
 function search(city) {
   let apiKey = "2e190051baofeb04db4bce4a3b4t041f";
@@ -112,4 +121,3 @@ let celsius = document.querySelector("#fahrenheit");
 celsius.addEventListener("click", displayCelsius);
 
 search("Durban");
-displayForecast();
