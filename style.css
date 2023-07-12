@@ -49,6 +49,7 @@ h6 {
   text-shadow: rgba(0, 0, 0, 0.3) 0.5px 0.5px;
 }
 .weather-forecast {
+  margin-left: 35px;
   margin-top: 20px;
   text-align: center;
 }
