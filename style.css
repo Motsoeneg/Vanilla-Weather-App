@@ -1,5 +1,6 @@
 body {
-  background-color: rgb(249, 243, 234);
+  background-image: url("images/background.jpg");
+  background-size: cover;
   font-family: Roboto, Helvetica, sans-serif;
 }
 
@@ -35,7 +36,7 @@ h6 {
   margin: 40px auto;
 }
 .weather {
-  background-color: rgb(241, 216, 178);
+  background-color: rgb(232, 216, 193);
   padding: 20px;
   border: 1px solid #adadad;
   border-radius: 5px;
@@ -49,9 +50,10 @@ h6 {
   text-shadow: rgba(0, 0, 0, 0.3) 0.5px 0.5px;
 }
 .weather-forecast {
+  text-align: center;
+
   margin-left: 25px;
   margin-top: 20px;
-  text-align: center;
 }
 
 .weather-forecast-day {
